@@ -13,5 +13,18 @@ public class UsePropertiesWithJackson {
         System.out.println(car.brand);
         System.out.println(car.model);
         System.out.println(car.color);
+        ignoreCarProperty(mapper);
+    }
+
+    private static void ignoreCarProperty(ObjectMapper mapper) throws Exception {
+        Car car = new Car();
+        car.brand = "suzuki";
+        car.model = "fx";
+        car.color = "blue";
+        car.engine = "800cc";
+
+        // engine was not in the json string as it uses JsonIgnore property
+        String writeValueAsString = mapper.writeValueAsString(car);
+        System.out.println(writeValueAsString);
     }
 }
