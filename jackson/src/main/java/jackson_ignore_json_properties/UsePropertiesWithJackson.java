@@ -14,6 +14,22 @@ public class UsePropertiesWithJackson {
         System.out.println(car.model);
         System.out.println(car.color);
         ignoreCarProperty(mapper);
+        ignoreCarPropertyWitDeSerialization(mapper);
+    }
+
+    private static void ignoreCarPropertyWitDeSerialization(ObjectMapper mapper)
+            throws Exception, Exception, Exception {
+        String jsonString = "{\"brand_name\":\"Toyota\", \"type\":\"SUV\", \"carColor\":\"Green\", \"engine\":\"old\" }";
+        Car readValue = mapper.readValue(jsonString, Car.class);
+        Car car = new Car();
+        car.engine = "800cc";
+
+        System.out.println(readValue.brand);
+        System.out.println(readValue.model);
+        System.out.println(readValue.color);
+        // engine is null since its property is set to be jsonIgnore
+        System.out.println(readValue.engine);
+
     }
 
     private static void ignoreCarProperty(ObjectMapper mapper) throws Exception {
