@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 
 public class Car {
     @JsonAlias({ "brandName", "brand_name", "myBrandName" })
-    private String brand;
+    public String brand;
 
     @JsonAlias({ "type" })
-    private String model;
+    public String model;
 
     @JsonAlias({ "carColor" })
-    private String color;
+    public String color;
 }
