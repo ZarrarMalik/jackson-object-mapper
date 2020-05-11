@@ -1,5 +1,6 @@
 package jackson_java_objects_to_json;
 
+import java.io.File;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +12,9 @@ public class App {
         FootBallPlayer footBallPlayer = new FootBallPlayer("Henry", 14);
         String jsonString = objectMapper.writeValueAsString(footBallPlayer);
         System.out.println(jsonString);
+
+        String path = "C:\\Users\\zarrar\\git\\jackson-object-mapper\\jackson\\Resources\\outfile.json";
+        objectMapper.writeValue(new File(path), footBallPlayer);
     }
 }
 
